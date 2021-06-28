@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace;
+    color: #FFF;
+    font-size: 1.8em;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+clock {
+    position:absolute;
+    transform: translate(50px, 30px);
+}
+
+background, dragon, clock, ship, creature, startscreen, endscreen{
+    position: absolute;
+    display: block;
+    box-sizing:border-box;
+}
+
+background {
+    background-image: url('../img/background.png');
+    background-position: bottom center;
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+    background-size:100vw 100vh;
+}
+
+dragon {
+    background-image: url('../img/draak1.png');
+    background-size: contain;
+    width: 250px;
+    height: 250px;
+}
+
+ship {
+    background-image: url('../img/ship1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 500px;
+}
+
+creature{
+    background-image: url('../img/creature1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 90px;
+}
+
+.crackedAsteroid{
+    background-image: url('../img/ship2.png');
+    width: 400px;
+    height: 400px;
+}
+
+.reddragon{
+    background-image: url('../img/draak3.png');
+    width: 250px;
+    height: 250px;
+}
+
+.deadCreature{
+    background-image: none;
+    width: 500px;
+    height: 500px;
+}
+
+startscreen div, endscreen div {
+    font-size: 3em;
+    padding-top: 26vh;
+    width: 100vw;
+    text-align: center;
+}
+
+startscreen button, endscreen button {
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-left: calc(50vw - 100px);
+    background-color: black;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+}
