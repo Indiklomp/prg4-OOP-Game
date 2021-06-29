@@ -1,6 +1,6 @@
 export class Clock {
     constructor(g) {
-        this._timer = 360;
+        this._timer = 3600;
         this.game = g;
         const game = document.querySelector('game');
         this.timebar = document.createElement("clock");
