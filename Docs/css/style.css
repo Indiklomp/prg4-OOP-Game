@@ -11,12 +11,25 @@ html, body {
     overflow: hidden;
 }
 
-clock {
+arrow{
+    background-image: url(../img/arrow.png);
+    width: 40px;
+    height: 15px;
+    background-size: 100% 100%;
+}
+
+clock{
     position:absolute;
     transform: translate(50px, 30px);
 }
 
-background, dragon, clock, ship, creature, startscreen, endscreen{
+score {
+    position:absolute;
+    transform: translate(50px, 30px);
+    position:relative; top : 50px;
+}
+
+background, dragon, clock, score, ship, creature, startscreen, endscreen, arrow{
     position: absolute;
     display: block;
     box-sizing:border-box;
@@ -35,15 +48,15 @@ dragon {
     background-image: url('../img/draak1.png');
     background-size: contain;
     width: 250px;
-    height: 250px;
+    height: 102px;
 }
 
 ship {
-    background-image: url('../img/ship1.png');
+    background-image: url('../img/enemyship.png');
     background-size: contain;
     background-repeat: no-repeat;
     width: 500px;
-    height: 500px;
+    height: 220px;
 }
 
 creature{
@@ -51,22 +64,23 @@ creature{
     background-size: contain;
     background-repeat: no-repeat;
     width: 100px;
-    height: 90px;
+    height: 62px;
 }
 
-.crackedAsteroid{
+.damagedship{
     background-image: url('../img/ship2.png');
     width: 400px;
-    height: 400px;
+    height: 180px;
+    position:absolute; top : 100px;
 }
 
 .reddragon{
     background-image: url('../img/draak3.png');
-    width: 250px;
-    height: 250px;
+    width: 325px;
+    height: 133px;
 }
 
-.deadCreature{
+.invisible{
     background-image: none;
     width: 500px;
     height: 500px;

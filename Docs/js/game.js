@@ -21,4 +21,4 @@ export class Game {
     }
 }
 new Game();
-//# sourceMappingURL=game.js.map
+//# sourceMappingURL=Game.js.map

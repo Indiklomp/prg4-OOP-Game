@@ -1,44 +1,40 @@
-import { EndScreen } from "./endscreen.js"
-import {Game} from "./Game.js"
+//importing classes 
+import { Game } from "./Game.js"
 
+//exporting the class
+export class Clock {
 
-
-export class Clock  {
-    private question: HTMLElement
-    private game : Game
-    private endscreen : EndScreen
-
-    private _timer: number = 1500
-
+    private timebar: HTMLElement
+    private game: Game
+    private _timer: number = 3600
     public get timer(): number {
         return this._timer
     }
 
-
-    constructor(g : Game) {
-        
+    constructor(g: Game) {
         this.game = g
         const game = document.querySelector('game') as HTMLElement
-        this.question = document.createElement("clock")
-        game.appendChild(this.question)
+        this.timebar = document.createElement("clock")
+        game.appendChild(this.timebar)
     }
 
+    //function to update the timebar
     public update() {
-
         this._timer--
+        //turns the number in to actual seconds 
         let secondsLeft = Math.floor(this._timer / 60)
-        let clockText = "Timer : " + this._timer + " sec"
-        if(this._timer <= 0) {
+        // forms the text of the timer 
+        let clockText = "Timer : " + secondsLeft + " sec"
+        if (this._timer <= 0) {
             this._timer = 0
-        
         }
-        
-        this.question.innerHTML = clockText
+        //implements the text in the Div
+        this.timebar.innerHTML = clockText
 
     }
-
-    public remove(){
-        this.question.remove()
+    //function to remove the timebar 
+    public remove() {
+        this.timebar.remove()
     }
-    
+
 }

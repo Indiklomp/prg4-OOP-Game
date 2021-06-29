@@ -13,6 +13,7 @@ export class GameObject {
         this.div.remove();
     }
     update() {
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
 }
 //# sourceMappingURL=gameobject.js.map

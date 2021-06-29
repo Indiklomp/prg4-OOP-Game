@@ -7,10 +7,9 @@ export class EndScreen extends GameObject {
         const btn = document.createElement("button");
         this.div.appendChild(text);
         this.div.appendChild(btn);
-        text.innerText = "You sunk ... ships ";
+        text.innerText = 'Time is up';
         btn.innerText = "Play again";
         btn.addEventListener("click", () => this.gotoStartScreen());
-        console.log("hallo?");
     }
     gotoStartScreen() {
         this.remove();

@@ -1,49 +1,34 @@
-import {GameObject} from "./gameobject.js"
+//importing classes 
+import { GameObject } from "./gameobject.js"
 import { StartScreen } from "./startscreen.js"
-import {GameScreen} from "./gamescreen.js"
+import { GameScreen } from "./gamescreen.js"
 import { EndScreen } from "./endscreen.js"
-import { Clock } from "./clock.js"
 
-export class Game{
+//exporting the class
+export class Game {
 
-    private screen : GameObject
-    private clock: Clock
+    private screen: GameObject
 
-    constructor(){
+    constructor() {
         this.screen = new StartScreen(this)
         this.gameLoop()
     }
-
-    public showGameScreen(){
+    //making new gamescreen
+    public showGameScreen() {
         this.screen = new GameScreen(this)
     }
-
-    public showEndScreen(){
+    //making new endscreen
+    public showEndScreen() {
         this.screen = new EndScreen(this)
     }
-
-    public showStartScreen(){
+    //making new startscreen
+    public showStartScreen() {
         this.screen = new StartScreen(this)
     }
-
-    private gameLoop(){
-        
-
-       // if(this.showGameScreen){
-           // console.log("gamescreen is zichtbaar ");
-      //  }
-        
-        //if (this.clock.timer < 1){
-            //alles removen
-          //  console.log("clock < 1");
-            
-          //  if(!this.showEndScreen){
-            //    this.showEndScreen()
-           // }
-      //  }
+    //requests the animation frames to make the game run. 
+    private gameLoop() {
         this.screen.update()
-        requestAnimationFrame(()=>this.gameLoop())
-       
+        requestAnimationFrame(() => this.gameLoop())
     }
 }
 

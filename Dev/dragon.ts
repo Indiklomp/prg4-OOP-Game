@@ -1,44 +1,63 @@
-import {GameObject } from "./gameobject.js"
-export class Dragon extends GameObject{
+//importing classes 
+import { GameObject } from "./gameobject.js"
 
+//exporting the class
+export class Dragon extends GameObject {
+
+    //makes the dragon slowly float up when the game starts 
     verticalSpeed: number = -.5
 
-    constructor(){
+    constructor() {
+        
         super("dragon")
-        window.addEventListener("keyup", (e : KeyboardEvent) => this.onKeyUpHandler(e) )
-        window.addEventListener("keydown" , (e : KeyboardEvent) => this.onKeyDownHandler(e)  )
-        this.x=150
-        this.y=150
+        //adds the eventlisteners for the keyboardevents 
+        window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUpHandler(e))
+        window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDownHandler(e))
+        this.x = 150
+        this.y = 250
     }
 
-    public onKeyUpHandler(e: KeyboardEvent): any {
-        if (e.key == "ArrowUp" || e.key == "ArrowDown"){
+    private onKeyUpHandler(e: KeyboardEvent): any {
+        // Check if ArrowUp or ArrowDown key has been released
+        if (e.key == "ArrowUp" || e.key == "ArrowDown") {
+            // verticalspeed is 0
             this.verticalSpeed = 0
-        }  
+        }
     }
+    //adding the arrow 
+    private onKeyDownHandler(e: KeyboardEvent): any {
 
-    public onKeyDownHandler(e: KeyboardEvent): any {
-
-       switch (e.key) {
-           case "ArrowUp":
-               this.verticalSpeed = -5
-               break;
-            case "ArrowDown":
-                this.verticalSpeed = 5
+        switch (e.key) {
+            //when the arrowupkey is pressed 
+            case "ArrowUp":
+                // make the verticalspeed -5 (negative value )
+                this.verticalSpeed = -7
                 break;
-           default:
-               break;
-       }
+            //when the arrowdownkey is pressed 
+            case "ArrowDown":
+                //make the verticalspeed 5 (positive value )
+                this.verticalSpeed = 7
+                break;
+            default:
+                break;
+        }
     }
 
     public update() {
+        //adds verticalspeed 
         this.y += this.verticalSpeed
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        super.update()
     }
 
-    crash() {
+    //adds the red color to the dragon on impact with a creature
+    public crash() {
         this.div.classList.add("reddragon");
     }
-    
+
+    //removes the class reddragon 
+    public arrowHit() {
+        this.div.classList.remove("reddragon");
+    }
+
 
 }

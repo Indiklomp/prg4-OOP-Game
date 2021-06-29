@@ -6,16 +6,16 @@ export class Creature extends GameObject {
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
     }
     update() {
-        this.x -= 4;
+        this.x -= 6;
         if (this.x + this.div.clientWidth < 0) {
             this.x = window.innerWidth;
             this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
-            this.div.classList.remove("deadCreature");
+            this.div.classList.remove("invisible");
         }
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        super.update();
     }
     crash() {
-        this.div.classList.add("deadCreature");
+        this.div.classList.add("invisible");
     }
 }
 //# sourceMappingURL=creature.js.map

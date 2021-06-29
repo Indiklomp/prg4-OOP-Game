@@ -1,10 +1,10 @@
 export class Clock {
     constructor(g) {
-        this._timer = 1500;
+        this._timer = 360;
         this.game = g;
         const game = document.querySelector('game');
-        this.question = document.createElement("clock");
-        game.appendChild(this.question);
+        this.timebar = document.createElement("clock");
+        game.appendChild(this.timebar);
     }
     get timer() {
         return this._timer;
@@ -12,14 +12,14 @@ export class Clock {
     update() {
         this._timer--;
         let secondsLeft = Math.floor(this._timer / 60);
-        let clockText = "Timer : " + this._timer + " sec";
+        let clockText = "Timer : " + secondsLeft + " sec";
         if (this._timer <= 0) {
             this._timer = 0;
         }
-        this.question.innerHTML = clockText;
+        this.timebar.innerHTML = clockText;
     }
     remove() {
-        this.question.remove();
+        this.timebar.remove();
     }
 }
 //# sourceMappingURL=clock.js.map

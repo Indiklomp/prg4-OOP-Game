@@ -1,43 +1,60 @@
-import {GameObject } from "./gameobject.js"
-export class Ship extends GameObject{
+//importing classes 
+import { GameObject } from "./gameobject.js"
+import { GameScreen } from "./gamescreen.js"
+import { Arrow } from "./arrow.js"
 
-constructor(tagname: string){
-    super(tagname)
+//exporting the class
+export class Ship extends GameObject {
 
-    // Generate x and y value
-    this.x = 0 
-    this.y = 550
-    const game = document.querySelector('game') as HTMLElement
+    private gamescreen: GameScreen
 
-}
+    constructor(tagname: string, g: GameScreen) {
+        super(tagname)
+        // Generate x and y value
+        this.gamescreen = g
+        this.x = 0
+        this.y = 550
+        const game = document.querySelector('game') as HTMLElement
+    }
 
-public create() : void {
-    this.div = document.createElement("ship")
-    document.body.appendChild(this.div)
-}
+    //getter for the X value 
+    public get valueX(): number {
+        return this.x
+    }
 
+    //getter for the Y value 
+    public get valueY(): number {
+        return this.y
+    }
 
-public update(): void{
-     // Move the asteroid (x-value) to the left. 
-     this.x -= 3
+    public update(): void {
+        // the speed of the ship moving to the left 
+        this.x -= 3
+        this.shoot()
 
-     // Check if the asteroid is completely outside the screen (left side)
-     if(this.x + this.div.clientWidth < -500) {
-         // Place the asteroid on the right side outside the screen
-         this.x = window.innerWidth
-         // Generate a random y-value
-         this.y = 600
-         this.div.classList.remove("crackedAsteroid")
-     }
+        // Check if the ship is completely outside the screen (left side)
+        if (this.x + this.div.clientWidth < 0) {
+            // Place the ship on the right side outside the screen
+            this.x = window.innerWidth
+            // Generate a y-value
+            this.y = 600
+            //removes the class of invisible
+            this.div.classList.remove("damagedship")
+        }
 
-     // Draw the shark on the right coordinate (x, y)
-     this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
-}
+        super.update()
+    }
 
-public crash() : void {
-    this.div.classList.add("crackedAsteroid")
-    this.y -= -1
-}
+    // adding a damaged ship class to the ship  and moving the ship 180px down the next frame 
+    public crash(): void {
+        this.div.classList.add("damagedship")
+        this.y -= -180
+    }
 
-
+    // shoots arrows 
+    private shoot() {
+        if (Math.random() < .01) {
+            this.gamescreen.addArrow(new Arrow("arrow", this))
+        }
+    }
 }
