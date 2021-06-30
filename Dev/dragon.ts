@@ -5,7 +5,7 @@ import { GameObject } from "./gameobject.js"
 export class Dragon extends GameObject {
 
     //makes the dragon slowly float up when the game starts 
-    verticalSpeed: number = -.5
+    private verticalSpeed: number = -.5
 
     constructor() {
         

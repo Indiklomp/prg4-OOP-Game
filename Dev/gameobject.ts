@@ -17,11 +17,11 @@ export class GameObject {
         gameElement.appendChild(this.div)
     }
 //remove function
-    public remove() {
+    public remove() : void {
         this.div.remove()
     }
 //update function
-    public update() {
+    public update() : void {
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
 }

@@ -8,7 +8,7 @@ export class Clock {
     private game: Game
     private _timer: number = 3600
     public get timer(): number {
-        return this._timer
+        return this._timer       
     }
 
     constructor(g: Game) {

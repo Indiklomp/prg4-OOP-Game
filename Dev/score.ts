@@ -25,7 +25,7 @@ export class Score {
         this.scoreBar.innerHTML = sunkenShips
     }
 
-    //function to add +S1 to the sunkenshipcounter 
+    //function to add +1 to the sunkenshipcounter 
     public addScore() {
         this._score++
         this.update()
